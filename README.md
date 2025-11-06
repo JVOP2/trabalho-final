@@ -46,9 +46,31 @@ cd infraestrutura
 docker-compose up -d
 ```
 
+### Executar Backend
+```bash
+cd projeto/backend
+npm install
+npm run dev
+```
+
 ### Acessar Serviços
+- **API Backend**: `http://localhost:3000`
+- **Documentação API**: `http://localhost:3000/api-docs`
 - **MongoDB**: `localhost:27017`
 - **Portainer**: `http://localhost:9000`
+
+## Endpoints da API
+
+### Instituições
+- `POST /api/v1/instituicoes` - Criar instituição
+- `GET /api/v1/instituicoes` - Listar instituições (com filtros)
+- `PUT /api/v1/instituicoes/:id` - Atualizar instituição
+- `DELETE /api/v1/instituicoes/:id` - Remover instituição
+
+#### Parâmetros de Consulta
+- `?ativo=true|false` - Filtrar por status
+- `?nome=texto` - Filtrar por nome (contém)
+- `?page=1&limit=20` - Paginação
 
 ## Funcionalidades Implementadas
 
@@ -62,6 +84,19 @@ docker-compose up -d
 - Network dedicada para comunicação
 - Volumes persistentes para dados
 
+✅ **Backend - API REST**
+- Projeto Node.js com Express e Mongoose
+- Modelo de dados para Instituições
+- CRUD completo para instituições (/api/v1/instituicoes)
+- Validação de dados e tratamento de erros
+- Suporte a HTTPS configurável
+- Documentação Swagger em /api-docs
+- Middleware de segurança (Helmet, CORS)
+- Logging com Morgan
+- Paginação e filtros nas consultas
+
 ✅ **Documentação**
 - README.md atualizado
 - Documentos de requisitos e horários
+- JSDoc em todo o código
+- Documentação Swagger da API

@@ -1,10 +1,9 @@
-version: '3.8'
-
 services:
   pm2025-2-trabalho-final-mongo:
-    image: mongo:latest
+    image: mongo:6
     container_name: pm2025-2-trabalho-final-mongo
     restart: always
+    command: ["mongod", "--auth", "--bind_ip_all"]
     environment:
       MONGO_INITDB_ROOT_USERNAME: pm2025-2-mongo-admin
       MONGO_INITDB_ROOT_PASSWORD: pm2025-2-mongo-secret
@@ -13,6 +12,13 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+      # Opcional: crie um user de aplicação automaticamente
+      # - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
     networks:
       - pm2025-2-network
 
