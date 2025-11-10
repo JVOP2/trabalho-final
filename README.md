@@ -53,7 +53,15 @@ npm install
 npm run dev
 ```
 
+### Executar Frontend
+```bash
+cd projeto/frontend
+npm install
+npm run dev
+```
+
 ### Acessar Serviços
+- **Frontend Web**: `http://localhost:5173`
 - **API Backend**: `http://localhost:3000`
 - **Documentação API**: `http://localhost:3000/api-docs`
 - **MongoDB**: `localhost:27017`
@@ -94,6 +102,16 @@ npm run dev
 - Middleware de segurança (Helmet, CORS)
 - Logging com Morgan
 - Paginação e filtros nas consultas
+
+✅ **Frontend Web - React**
+- Projeto React com Vite e Material-UI
+- Layout responsivo com cabeçalho, área de trabalho e rodapé
+- Menu lateral (drawer) com navegação
+- Componente de Instituições com CRUD completo
+- Grid de dados com ordenação e filtros
+- Modais para edição e criação
+- Integração com API do backend
+- Design responsivo para mobile e desktop
 
 ✅ **Documentação**
 - README.md atualizado
