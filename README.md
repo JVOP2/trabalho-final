@@ -60,8 +60,16 @@ npm install
 npm run dev
 ```
 
+### Executar Mobile
+```bash
+cd projeto/mobile
+npm install
+npm start
+```
+
 ### Acessar Serviços
 - **Frontend Web**: `http://localhost:5173`
+- **Mobile App**: Expo Development Server
 - **API Backend**: `http://localhost:3000`
 - **Documentação API**: `http://localhost:3000/api-docs`
 - **MongoDB**: `localhost:27017`
@@ -112,6 +120,18 @@ npm run dev
 - Modais para edição e criação
 - Integração com API do backend
 - Design responsivo para mobile e desktop
+
+✅ **Mobile App - React Native**
+- Projeto React Native com Expo
+- Interface Material Design com React Native Paper
+- CRUD completo de Instituições idêntico ao web
+- Cards responsivos para listagem
+- Formulários modais para criação/edição
+- Filtros em tempo real
+- Navegação com React Navigation
+- Integração com mesma API do backend
+- Mensagens de feedback em português
+- Confirmações nativas para exclusões
 
 ✅ **Documentação**
 - README.md atualizado
