@@ -16,8 +16,22 @@ import {
 import {
   Business as BusinessIcon,
   Close as CloseIcon,
+  CalendarMonth as CalendarIcon,
+  Schedule as ScheduleIcon,
+  School as SchoolIcon,
+  Person as PersonIcon,
+  MenuBook as MenuBookIcon,
+  Computer as ComputerIcon,
+  Apartment as ApartmentIcon,
 } from '@mui/icons-material';
 import Instituicoes from '../Instituicoes/Instituicoes';
+import Cursos from '../Cursos/Cursos';
+import Professores from '../Professores/Professores';
+import Disciplinas from '../Disciplinas/Disciplinas';
+import Laboratorios from '../Laboratorios/Laboratorios';
+import Blocos from '../Blocos/Blocos';
+import GradeSemanal from '../Aulas/GradeSemanal';
+import FormularioAula from '../Aulas/FormularioAula';
 
 const Menu = ({ open, onClose }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -37,9 +51,26 @@ const Menu = ({ open, onClose }) => {
     setModalTitle('');
   };
 
+  const [formAulaOpen, setFormAulaOpen] = useState(false);
+
   const handleInstituicoesClick = () => {
     handleOpenModal('Gerenciar Instituições', <Instituicoes />);
   };
+
+  const handleGradeClick = () => {
+    handleOpenModal('Grade Semanal', <GradeSemanal />);
+  };
+
+  const handleAulasClick = () => {
+    setFormAulaOpen(true);
+    onClose();
+  };
+
+  const handleCursosClick = () => handleOpenModal('Gerenciar Cursos', <Cursos />);
+  const handleProfessoresClick = () => handleOpenModal('Gerenciar Professores', <Professores />);
+  const handleDisciplinasClick = () => handleOpenModal('Gerenciar Disciplinas', <Disciplinas />);
+  const handleLaboratoriosClick = () => handleOpenModal('Gerenciar Laboratórios', <Laboratorios />);
+  const handleBlocosClick = () => handleOpenModal('Gerenciar Blocos', <Blocos />);
 
   return (
     <>
@@ -54,10 +85,53 @@ const Menu = ({ open, onClose }) => {
           <List>
             <ListItem disablePadding>
               <ListItemButton onClick={handleInstituicoesClick}>
-                <ListItemIcon>
-                  <BusinessIcon />
-                </ListItemIcon>
+                <ListItemIcon><BusinessIcon /></ListItemIcon>
                 <ListItemText primary="Instituições" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleCursosClick}>
+                <ListItemIcon><SchoolIcon /></ListItemIcon>
+                <ListItemText primary="Cursos" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleProfessoresClick}>
+                <ListItemIcon><PersonIcon /></ListItemIcon>
+                <ListItemText primary="Professores" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleDisciplinasClick}>
+                <ListItemIcon><MenuBookIcon /></ListItemIcon>
+                <ListItemText primary="Disciplinas" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleLaboratoriosClick}>
+                <ListItemIcon><ComputerIcon /></ListItemIcon>
+                <ListItemText primary="Laboratórios" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleBlocosClick}>
+                <ListItemIcon><ApartmentIcon /></ListItemIcon>
+                <ListItemText primary="Blocos" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+          <Divider />
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleGradeClick}>
+                <ListItemIcon><CalendarIcon /></ListItemIcon>
+                <ListItemText primary="Grade Semanal" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={handleAulasClick}>
+                <ListItemIcon><ScheduleIcon /></ListItemIcon>
+                <ListItemText primary="Nova Aula" />
               </ListItemButton>
             </ListItem>
           </List>
@@ -113,6 +187,14 @@ const Menu = ({ open, onClose }) => {
           </Box>
         </Box>
       </Modal>
+
+      <FormularioAula
+        open={formAulaOpen}
+        onClose={() => setFormAulaOpen(false)}
+        onSalvar={() => {
+          setFormAulaOpen(false);
+        }}
+      />
     </>
   );
 };
